@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Sagar Tech Vlogs | Official Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #000000;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            overflow-x: hidden;
+        }
+        /* నియాన్ గ్లో బ్యాక్‌గ్రౌండ్ యానిమేషన్ */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 50, 50, 0.15), #000000 80%);
+            animation: glowShift 18s ease infinite alternate;
+            z-index: -2;
+        }
+        @keyframes glowShift {
+            0% { background: radial-gradient(circle at 30% 20%, rgba(255, 50, 50, 0.1), #000000 90%); }
+            50% { background: radial-gradient(circle at 70% 80%, rgba(255, 80, 80, 0.2), #050505 90%); }
+            100% { background: radial-gradient(circle at 40% 60%, rgba(255, 30, 30, 0.12), #000000 85%); }
+        }
+        /* గ్లాస్ కార్డ్ */
+        .glass-card {
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(5, 5, 5, 0.65);
+            backdrop-filter: blur(12px);
+            border-radius: 3rem;
+            padding: 2rem;
+            border: 1px solid rgba(255, 77, 77, 0.3);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.6);
+        }
+        /* ప్రొఫైల్ సర్కిల్ */
+        .profile-circle {
+            width: 170px;
+            height: 170px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            background: #0a0a0a;
+            border: 3px solid #ff4d4d;
+            box-shadow: 0 0 25px rgba(255, 77, 77, 0.5);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .profile-circle:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 35px rgba(255, 77, 77, 0.7);
+        }
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* టెక్స్ట్ కలర్స్ - మెరుగుపరచబడ్డాయి */
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            text-align: center;
+            background: linear-gradient(135deg, #ffffff, #ff6666, #ff4d4d);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        .badge {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0 0.5rem;
+            flex-wrap: wrap;
+        }
+        .badge span {
+            background: rgba(255, 77, 77, 0.15);
+            border: 1px solid #ff4d4d;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #ffcccc; /* లేత ఎరుపు / తెలుపు మిక్స్ */
+            backdrop-filter: blur(4px);
+        }
+        .new-videos {
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #ff6666;
+            margin: 0.75rem 0;
+            text-shadow: 0 0 5px rgba(255,0,0,0.3);
+            letter-spacing: 1px;
+        }
+        .everyweek {
+            text-align: center;
+            color: #dddddd; /* చాలా క్లియర్ */
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px dashed #ff4d4d;
+            display: inline-block;
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 6px;
+            font-weight: 500;
+        }
+        /* కేటగిరీలు */
+        .grid-four {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+        .cat-card {
+            background: rgba(20, 20, 20, 0.7);
+            backdrop-filter: blur(4px);
+            padding: 1.2rem 0.5rem;
+            border-radius: 1.5rem;
+            text-align: center;
+            transition: 0.25s;
+            border: 1px solid rgba(255, 77, 77, 0.3);
+        }
+        .cat-card:hover {
+            transform: translateY(-8px);
+            border-color: #ff4d4d;
+            background: rgba(30, 30, 30, 0.8);
+        }
+        .cat-card i {
+            font-size: 2.2rem;
+            color: #ff6666;
+            margin-bottom: 0.6rem;
+            display: block;
+        }
+        .cat-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffaaaa; /* లేత రెడ్ */
+        }
+        .cat-card p {
+            font-size: 0.8rem;
+            color: #bbbbbb; /* స్పష్టమైన బూడిద */
+            margin-top: 0.3rem;
+        }
+        /* ట్యాగ్స్ */
+        .tags-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem;
+            margin: 1.8rem 0;
+        }
+        .tag {
+            background: rgba(0,0,0,0.5);
+            border: 1px solid #ff4d4d;
+            padding: 0.4rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #ffcccc;
+            backdrop-filter: blur(2px);
+        }
+        /* బటన్ */
+        .subscribe-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(95deg, #ff0000, #cc0000);
+            color: white;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1rem;
+            padding: 14px 32px;
+            border-radius: 60px;
+            width: fit-content;
+            margin: 0 auto 2rem auto;
+            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.3);
+        }
+        .subscribe-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 28px rgba(255, 0, 0, 0.5);
+        }
+        /* బయో లింక్స్ */
+        .bio-container {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            border-radius: 2rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 77, 77, 0.3);
+        }
+        .bio-container h3 {
+            text-align: center;
+            margin-bottom: 1.2rem;
+            font-size: 1.3rem;
+            color: #ffffff;
+        }
+        .bio-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .bio-link {
+            background: #1a1a1a;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            color: #eeeeee;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: 0.2s;
+            border: 1px solid #333;
+        }
+        .bio-link:hover {
+            background: #ff4d4d;
+            color: #000000;
+            border-color: #ff4d4d;
+        }
+        /* రీల్స్ */
+        .reels-title {
+            margin: 1.5rem 0 1rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .reels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .reel-card {
+            background: #0a0a0a;
+            border-radius: 1.2rem;
+            overflow: hidden;
+            transition: 0.25s;
+            border: 1px solid #2a2a2a;
+        }
+        .reel-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff4d4d;
+        }
+        .reel-card img {
+            width: 100%;
+            aspect-ratio: 9 / 16;
+            object-fit: cover;
+        }
+        .reel-card .reel-caption {
+            padding: 0.8rem;
+            text-align: center;
+        }
+        .reel-card a {
+            color: #ff7777;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .reel-card a:hover {
+            color: #ffcccc;
+        }
+        /* ఫుటర్ */
+        .footer {
+            text-align: center;
+            padding-top: 1.8rem;
+            margin-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.7rem;
+            color: #999999;
+        }
+        @media (max-width: 750px) {
+            .glass-card { padding: 1.5rem; }
+            .grid-four { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            h1 { font-size: 2rem; }
+            .profile-circle { width: 130px; height: 130px; }
+            .new-videos { font-size: 1.3rem; }
+            .subscribe-btn { padding: 10px 24px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-card">
+        <div class="profile-circle">
+            <img src="https://i.ibb.co/8LjG5zqy/sagar.png" alt="Sagar Tech Vlogs">
+        </div>
+        <h1>SAGAR TECH VLOGS</h1>
+        <div class="badge">
+            <span>🌾 Village Life</span>
+            <span>📱 Tech Reviews</span>
+            <span>🎬 Daily Vlogs</span>
+            <span>😄 Funny Reels</span>
+        </div>
+        <div class="new-videos">🔥 NEW VIDEOS 🔥</div>
+        <div style="text-align: center;">
+            <div class="everyweek">EVERY WEEK | Telugu & English Content</div>
+        </div>
+
+        <div class="grid-four">
+            <div class="cat-card"><i class="fas fa-star"></i><h3>REVIEWS</h3><p>Tech & gadgets</p></div>
+            <div class="cat-card"><i class="fas fa-box-open"></i><h3>UNBOXING</h3><p>First impressions</p></div>
+            <div class="cat-card"><i class="fas fa-video"></i><h3>VLOGS</h3><p>Village life & fun</p></div>
+            <div class="cat-card"><i class="fas fa-heart"></i><h3>LIFESTYLE</h3><p>Telugu lifestyle</p></div>
+        </div>
+
+        <div class="tags-row">
+            <span class="tag">#TECH</span>
+            <span class="tag">#VLOGS</span>
+            <span class="tag">#LIFESTYLE</span>
+            <span class="tag">#TECHVLOGS</span>
+            <span class="tag">#VillageVlogs</span>
+        </div>
+
+        <a href="https://www.youtube.com/@SagarTechVlogs-1" target="_blank" class="subscribe-btn">
+            <i class="fab fa-youtube" style="font-size: 1.3rem;"></i> SUBSCRIBE & JOIN THE JOURNEY
+        </a>
+
+        <div class="bio-container">
+            <h3><i class="fas fa-link"></i> CONNECT WITH ME</h3>
+            <div class="bio-links">
+                <a href="https://www.youtube.com/@SagarTechVlogs-1" class="bio-link"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="#" class="bio-link"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="#" class="bio-link"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="#" class="bio-link"><i class="fab fa-telegram"></i> Telegram</a>
+                <a href="mailto:sagartechvlogs674@gmail.com" class="bio-link"><i class="fas fa-envelope"></i> Email</a>
+            </div>
+        </div>
+
+        <div class="reels-title">🎬 LATEST REELS / SHORTS</div>
+        <div class="reels-grid">
+            <div class="reel-card">
+                <a href="#"><img src="https://via.placeholder.com/300x533/222/ff4d4d?text=Reel+1" alt="Reel"></a>
+                <div class="reel-caption"><a href="#">Watch Now →</a></div>
+            </div>
+            <div class="reel-card">
+                <a href="#"><img src="https://via.placeholder.com/300x533/222/ff4d4d?text=Reel+2" alt="Reel"></a>
+                <div class="reel-caption"><a href="#">Funny Reel →</a></div>
+            </div>
+            <div class="reel-card">
+                <a href="#"><img src="https://via.placeholder.com/300x533/222/ff4d4d?text=Reel+3" alt="Reel"></a>
+                <div class="reel-caption"><a href="#">Tech Tip →</a></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            © 2026 Sagar Tech Vlogs | #VillageLife #TeluguVlogs | All rights reserved
+        </div>
+    </div>
+</body>
+</html>
