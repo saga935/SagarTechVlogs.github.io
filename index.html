@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Sagar Tech Vlogs | Official Website</title>
+    <title>Sagar Tech Vlogs | Red & White</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <style>
@@ -14,15 +14,16 @@
         }
         body {
             font-family: 'Inter', sans-serif;
-            background: #000000;
+            background: #0a0a0a;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 2rem;
             overflow-x: hidden;
+            position: relative;
         }
-        /* నియాన్ గ్లో బ్యాక్‌గ్రౌండ్ యానిమేషన్ */
+        /* యానిమేటెడ్ గ్రేడియంట్ బ్యాక్‌గ్రౌండ్ (పింక్, పర్పుల్, రెడ్) */
         body::before {
             content: '';
             position: fixed;
@@ -30,58 +31,89 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 30% 20%, rgba(255, 50, 50, 0.15), #000000 80%);
-            animation: glowShift 18s ease infinite alternate;
+            background: radial-gradient(circle at 30% 20%, rgba(255, 105, 180, 0.3), rgba(128, 0, 128, 0.2), #000000 80%);
+            animation: romanticGlow 14s ease infinite alternate;
             z-index: -2;
         }
-        @keyframes glowShift {
-            0% { background: radial-gradient(circle at 30% 20%, rgba(255, 50, 50, 0.1), #000000 90%); }
-            50% { background: radial-gradient(circle at 70% 80%, rgba(255, 80, 80, 0.2), #050505 90%); }
-            100% { background: radial-gradient(circle at 40% 60%, rgba(255, 30, 30, 0.12), #000000 85%); }
+        @keyframes romanticGlow {
+            0% { background: radial-gradient(circle at 20% 30%, rgba(255, 105, 180, 0.4), rgba(156, 39, 176, 0.2), #000000 85%); }
+            50% { background: radial-gradient(circle at 70% 80%, rgba(219, 112, 147, 0.45), rgba(255, 69, 0, 0.25), #0a0a0a 85%); }
+            100% { background: radial-gradient(circle at 50% 40%, rgba(255, 20, 147, 0.4), rgba(138, 43, 226, 0.3), #000000 80%); }
+        }
+        /* తేలియాడే హార్ట్లు */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .heart {
+            position: absolute;
+            color: rgba(255, 80, 80, 0.5);
+            font-size: 20px;
+            animation: floatHeart 10s infinite ease-in-out;
+            text-shadow: 0 0 5px #ff0000;
+        }
+        @keyframes floatHeart {
+            0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.4; }
+            50% { transform: translateY(-40px) translateX(20px) rotate(15deg); opacity: 0.8; }
+            100% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.4; }
         }
         /* గ్లాస్ కార్డ్ */
         .glass-card {
             max-width: 1100px;
             width: 100%;
-            background: rgba(5, 5, 5, 0.65);
-            backdrop-filter: blur(12px);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
             border-radius: 3rem;
             padding: 2rem;
-            border: 1px solid rgba(255, 77, 77, 0.3);
+            border: 1px solid rgba(255, 0, 0, 0.4);
             box-shadow: 0 30px 50px rgba(0, 0, 0, 0.6);
+            animation: fadeInUp 0.8s ease-out;
         }
-        /* ప్రొఫైల్ సర్కిల్ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* ప్రొఫైల్ సర్కిల్ (రెడ్ గ్లో) */
         .profile-circle {
             width: 170px;
             height: 170px;
             margin: 0 auto 1.5rem;
             border-radius: 50%;
             background: #0a0a0a;
-            border: 3px solid #ff4d4d;
-            box-shadow: 0 0 25px rgba(255, 77, 77, 0.5);
+            border: 3px solid #ff3333;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
             overflow: hidden;
-            transition: 0.3s;
+            transition: all 0.3s;
+            animation: redPulse 2s infinite alternate;
+        }
+        @keyframes redPulse {
+            0% { box-shadow: 0 0 15px #ff0000; border-color: #ff3333; }
+            100% { box-shadow: 0 0 40px #ff0000; border-color: #ff6666; }
         }
         .profile-circle:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 35px rgba(255, 77, 77, 0.7);
+            transform: scale(1.03);
         }
         .profile-circle img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        /* టెక్స్ట్ కలర్స్ - మెరుగుపరచబడ్డాయి */
+        /* టెక్స్ట్ రంగులు: రెడ్ & వైట్ */
         h1 {
             font-size: 2.8rem;
             font-weight: 800;
             text-align: center;
-            background: linear-gradient(135deg, #ffffff, #ff6666, #ff4d4d);
+            background: linear-gradient(135deg, #ffffff, #ff4444);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             letter-spacing: -0.5px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
         .badge {
             display: flex;
@@ -91,38 +123,45 @@
             flex-wrap: wrap;
         }
         .badge span {
-            background: rgba(255, 77, 77, 0.15);
-            border: 1px solid #ff4d4d;
+            background: rgba(255, 0, 0, 0.15);
+            border: 1px solid #ff4444;
             padding: 0.3rem 1rem;
             border-radius: 30px;
             font-size: 0.8rem;
             font-weight: 600;
-            color: #ffcccc; /* లేత ఎరుపు / తెలుపు మిక్స్ */
-            backdrop-filter: blur(4px);
+            color: #ffffff;
+            transition: 0.2s;
+        }
+        .badge span:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 0, 0, 0.3);
         }
         .new-videos {
             text-align: center;
             font-size: 1.6rem;
             font-weight: 800;
-            color: #ff6666;
+            color: #ff4444;
             margin: 0.75rem 0;
-            text-shadow: 0 0 5px rgba(255,0,0,0.3);
-            letter-spacing: 1px;
+            text-shadow: 0 0 5px rgba(255,0,0,0.5);
+            animation: redTextPulse 2s infinite;
+        }
+        @keyframes redTextPulse {
+            0% { opacity: 0.8; text-shadow: 0 0 2px #ff0000; }
+            100% { opacity: 1; text-shadow: 0 0 12px #ff0000; }
         }
         .everyweek {
             text-align: center;
-            color: #dddddd; /* చాలా క్లియర్ */
+            color: #cccccc;
             font-size: 1rem;
             margin-bottom: 2rem;
-            border-bottom: 1px dashed #ff4d4d;
+            border-bottom: 1px dashed #ff4444;
             display: inline-block;
             width: auto;
             margin-left: auto;
             margin-right: auto;
             padding-bottom: 6px;
-            font-weight: 500;
         }
-        /* కేటగిరీలు */
+        /* 4 కార్డ్లు */
         .grid-four {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -130,33 +169,38 @@
             margin: 2.5rem 0;
         }
         .cat-card {
-            background: rgba(20, 20, 20, 0.7);
+            background: rgba(10, 10, 10, 0.7);
             backdrop-filter: blur(4px);
             padding: 1.2rem 0.5rem;
             border-radius: 1.5rem;
             text-align: center;
-            transition: 0.25s;
-            border: 1px solid rgba(255, 77, 77, 0.3);
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 68, 68, 0.5);
         }
         .cat-card:hover {
-            transform: translateY(-8px);
-            border-color: #ff4d4d;
-            background: rgba(30, 30, 30, 0.8);
+            transform: translateY(-10px) scale(1.02);
+            border-color: #ff0000;
+            background: rgba(30, 0, 0, 0.8);
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
         }
         .cat-card i {
             font-size: 2.2rem;
-            color: #ff6666;
+            color: #ff5555;
             margin-bottom: 0.6rem;
-            display: block;
+            transition: 0.2s;
+        }
+        .cat-card:hover i {
+            transform: scale(1.1);
+            color: #ff8888;
         }
         .cat-card h3 {
             font-size: 1.3rem;
             font-weight: 700;
-            color: #ffaaaa; /* లేత రెడ్ */
+            color: #ffaaaa;
         }
         .cat-card p {
             font-size: 0.8rem;
-            color: #bbbbbb; /* స్పష్టమైన బూడిద */
+            color: #dddddd;
             margin-top: 0.3rem;
         }
         /* ట్యాగ్స్ */
@@ -169,15 +213,20 @@
         }
         .tag {
             background: rgba(0,0,0,0.5);
-            border: 1px solid #ff4d4d;
+            border: 1px solid #ff4444;
             padding: 0.4rem 1.2rem;
             border-radius: 30px;
             font-size: 0.85rem;
             font-weight: 600;
-            color: #ffcccc;
-            backdrop-filter: blur(2px);
+            color: #ffffff;
+            transition: 0.2s;
         }
-        /* బటన్ */
+        .tag:hover {
+            background: #ff0000;
+            color: #ffffff;
+            transform: scale(1.02);
+        }
+        /* Subscribe Button */
         .subscribe-btn {
             display: flex;
             align-items: center;
@@ -192,27 +241,33 @@
             border-radius: 60px;
             width: fit-content;
             margin: 0 auto 2rem auto;
-            transition: 0.3s;
-            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.3);
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
+            animation: btnRedPulse 2s infinite;
+        }
+        @keyframes btnRedPulse {
+            0% { transform: scale(1); box-shadow: 0 5px 15px rgba(255,0,0,0.4); }
+            50% { transform: scale(1.02); box-shadow: 0 8px 25px rgba(255,0,0,0.8); }
+            100% { transform: scale(1); box-shadow: 0 5px 15px rgba(255,0,0,0.4); }
         }
         .subscribe-btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 28px rgba(255, 0, 0, 0.5);
+            transform: scale(1.04);
+            background: linear-gradient(95deg, #ff3333, #aa0000);
         }
-        /* బయో లింక్స్ */
+        /* Bio links */
         .bio-container {
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(8px);
             border-radius: 2rem;
             padding: 1.5rem;
             margin: 2rem 0;
-            border: 1px solid rgba(255, 77, 77, 0.3);
+            border: 1px solid rgba(255, 68, 68, 0.5);
         }
         .bio-container h3 {
             text-align: center;
             margin-bottom: 1.2rem;
             font-size: 1.3rem;
-            color: #ffffff;
+            color: #ffaaaa;
         }
         .bio-links {
             display: flex;
@@ -224,22 +279,21 @@
             background: #1a1a1a;
             padding: 0.6rem 1.5rem;
             border-radius: 40px;
-            color: #eeeeee;
+            color: #ffffff;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 8px;
             font-size: 0.85rem;
             font-weight: 500;
-            transition: 0.2s;
-            border: 1px solid #333;
+            transition: all 0.25s;
+            border: 1px solid #ff4444;
         }
         .bio-link:hover {
-            background: #ff4d4d;
-            color: #000000;
-            border-color: #ff4d4d;
+            background: #ff0000;
+            color: #ffffff;
+            transform: translateY(-3px);
         }
-        /* రీల్స్ */
         .reels-title {
             margin: 1.5rem 0 1rem;
             font-size: 1.3rem;
@@ -256,12 +310,13 @@
             background: #0a0a0a;
             border-radius: 1.2rem;
             overflow: hidden;
-            transition: 0.25s;
-            border: 1px solid #2a2a2a;
+            transition: all 0.3s;
+            border: 1px solid #ff4444;
         }
         .reel-card:hover {
-            transform: translateY(-5px);
-            border-color: #ff4d4d;
+            transform: translateY(-8px) scale(1.02);
+            border-color: #ff0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
         }
         .reel-card img {
             width: 100%;
@@ -273,22 +328,17 @@
             text-align: center;
         }
         .reel-card a {
-            color: #ff7777;
+            color: #ff6666;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
         }
-        .reel-card a:hover {
-            color: #ffcccc;
-        }
-        /* ఫుటర్ */
         .footer {
             text-align: center;
             padding-top: 1.8rem;
             margin-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255, 68, 68, 0.4);
             font-size: 0.7rem;
-            color: #999999;
+            color: #cccccc;
         }
         @media (max-width: 750px) {
             .glass-card { padding: 1.5rem; }
@@ -296,14 +346,17 @@
             h1 { font-size: 2rem; }
             .profile-circle { width: 130px; height: 130px; }
             .new-videos { font-size: 1.3rem; }
-            .subscribe-btn { padding: 10px 24px; font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
+    <!-- తేలియాడే హార్ట్లు -->
+    <div class="hearts" id="hearts"></div>
+
     <div class="glass-card">
         <div class="profile-circle">
-            <img src="https://i.ibb.co/8LjG5zqy/sagar.png" alt="Sagar Tech Vlogs">
+            <!-- మీ కొత్త ఫోటో లింక్ -->
+            <img src="https://i.ibb.co/LDj6693Y/new-1.png" alt="Sagar Tech Vlogs">
         </div>
         <h1>SAGAR TECH VLOGS</h1>
         <div class="badge">
@@ -364,8 +417,30 @@
         </div>
 
         <div class="footer">
-            © 2026 Sagar Tech Vlogs | #VillageLife #TeluguVlogs | All rights reserved
+            © 2026 Sagar Tech Vlogs | #VillageLife #TeluguVlogs | ❤️ Tech & Heart ❤️
         </div>
     </div>
+
+    <script>
+        // తేలియాడే హార్ట్లు (రెడ్ షేడ్స్)
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            const numHearts = 40;
+            for (let i = 0; i < numHearts; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                const size = Math.random() * 20 + 14;
+                heart.style.fontSize = size + 'px';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.top = Math.random() * 100 + '%';
+                const duration = Math.random() * 12 + 8;
+                heart.style.animation = `floatHeart ${duration}s infinite ease-in-out`;
+                heart.style.animationDelay = Math.random() * 8 + 's';
+                heartsContainer.appendChild(heart);
+            }
+        }
+        createHearts();
+    </script>
 </body>
 </html>
